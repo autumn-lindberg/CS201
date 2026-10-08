@@ -22,6 +22,7 @@ int main() {
 	char * s = malloc(sizeof(char) * MAX_LENGTH);          // %s
 
 	// sizes
+	//
 	printf("The size of an int is: %ld\n", sizeof(n));
 	printf("The size of a long is: %ld\n", sizeof(l));
 	printf("The size of a char is: %ld\n", sizeof(c));
