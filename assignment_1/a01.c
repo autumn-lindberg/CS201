@@ -162,7 +162,7 @@ int main() {
 		}
 		else if (strcmp(choice, "remove") == 0 || strcmp(choice, "REMOVE") == 0) { 
 			popped = pop(ll);
-			if (popped == INT_MIN) printf("pop failed. stack is empty.\n");
+			if (popped == INT_MIN) printf("pop failed. stack is empty.\n\n");
 			else printf("popped %d\n\n", popped);
 		}
 		else if (strcmp(choice, "display") == 0 || strcmp(choice, "DISPLAY") == 0) {
