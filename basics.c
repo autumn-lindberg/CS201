@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include <unistd.h>
+#include <signal.h>
 
 int MAX_LENGTH = 100;
 
@@ -8,6 +10,14 @@ struct Rect {
 	long width;
 	long height;
 };
+
+void doException(int sig) {
+	char msg[] = "exception thrown\n";
+	// 1 = write, msg is the buffer, length: \0 added automatically, get rid of \n
+	write(1, msg, sizeof(msg) - 1);
+	// if no exit or return, it retries the line that faulted again
+	_exit(1);
+}
 
 int main() {
 
@@ -69,4 +79,19 @@ int main() {
 	// and *n would give a bogus value
 	num = 0;
 	free(0);
+
+	// FORKS
+	// 0 is child process
+	pid_t pid = fork();
+
+	if (pid == 0) {
+		printf("hello from the child, my pid is: %d and my parents is %d\n", getpid(), getppid());
+	}
+	else printf("hello from the parent, my pid is %d\n", getpid());
+
+	signal(SIGFPE, doException);
+
+
 }
+
+

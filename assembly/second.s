@@ -6,8 +6,9 @@ _start:
 	call sub 
 	call sub
 	call stack_frame
+	call test_mult
 
-	# else end program
+	# end program
 	mov %rax, %rdi
 	mov $60, %rax
 	syscall
@@ -25,7 +26,7 @@ _start:
 				# // continue
 
 
-# subroutines (this one doubles rdi and passes to rax)
+# subroutines (this one doubles rdi) RETURNS GO INTO RAX 
 sub:
 	mov %rdi, %r10			# move passed argument into generic register (r10+)
 	add %r10, %r10
@@ -41,6 +42,7 @@ stack_frame:
 
 	# make a new stack with room for 2 longs 
 	# move stack pointer to TOP of NEW stack
+	# STACK SIZE EXPECTS MULTIPLES OF 16
 	sub $16, %rsp
 
 	mov %rdi, -8(%rbp)			# push first argument onto new stack
@@ -51,3 +53,8 @@ stack_frame:
 	mov %rbp, %rsp					# return stack pointer to base
 	pop %rbp
 	ret
+
+# multiplication (factorial)
+test_mult:
+	ret	
+

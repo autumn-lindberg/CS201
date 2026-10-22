@@ -1,20 +1,21 @@
 # 64-bit	32-bit	16-bit	8-bit	Typical use
-# %rax    %eax	  %ax	    %al   accumulator (result of mul/div/etc, syscalls)
+# %rax    %eax	  %ax	    %al   accumulator (returns, result of mul/div/etc, syscalls)
 # %rbx	  %ebx	  %bx	    %bl	  base (array base address)
 # %rcx	  %ecx	  %cx	    %cl   counter (loop / rep instructions)
 # %rdx	  %edx	  %dx	    %dl 	data length (I/O operations)
 # %rsi	  %esi	  %si	    %sil	source index for string operations
 # %rdi	  %edi	  %di	    %dil	destination index (stdin, stdout, PROGRAM RETURN VAL)
 # %rbp	  %ebp	  %bp	    %bpl	Base pointer (DONT TOUCH)
-# %rsp	  %esp	  %sp	    %spl	Stack pointer (DONT TOUCH)
-# %r8	    %r8d	  %r8w	  %r8b	5th argument / free use
-# %r9	    %r9d	  %r9w	  %r9b	6th argument / free use
-# %r10	  %r10d	  %r10w	  %r10b	7th argument / free use
-# %r11	  %r11d	  %r11w	  %r11b	8th arugment / free use
-# %r12	  %r12d 	%r12w	  %r12b	9th argument / free use
-# %r13	  %r13d  	%r13w	  %r13b	10th argument / free use
-# %r14	  %r14d	  %r14w	  %r14b	11th argument / free use
-# %r15	  %r15d	  %r15w	  %r15b	12th argument / free use
+# %rsp	  %esp	  %sp	    %spl	Stack pointer 
+# %r8	    %r8d	  %r8w	  %r8b	5th argument 
+# %r9	    %r9d	  %r9w	  %r9b	6th argument 
+# %r10	  %r10d	  %r10w	  %r10b	free use / callee saved
+# %r11	  %r11d	  %r11w	  %r11b	
+# %r12	  %r12d 	%r12w	  %r12b		if a function uses these,
+# %r13	  %r13d  	%r13w	  %r13b		it must save their values to the stack
+# %r14	  %r14d	  %r14w	  %r14b		and return them to their original state
+# %r15	  %r15d	  %r15w	  %r15b		before returning (by convention)
+
 # %rip                          pseudo-register (positional addresses)
 
 # store variables here
@@ -66,6 +67,7 @@ _start:
 																		# *(rbx) += 16;
 
 																		# offset(base, index, sizeof(base))
+																		# lea doesn't use memory
 
 # put into return value of program (ONE unsigned byte)
 				movq (%rbx, %rax, 8), %rdi
@@ -94,7 +96,8 @@ _start:
 				# under here is the "else" section
 
 # reading / writing
-													# argument order: rdi, rsi, rdx, rsx, r1-r15
+													# argument order: rdi, rsi, rdx, rcx, r8, r9
+													# anything else has to be passed on the stack
 
 															# syscall for read is 0
 				mov $1, %rax					# syscall for write is 1
