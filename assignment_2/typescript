@@ -1,0 +1,29 @@
+Script started on 2026-10-24 09:22:52-07:00
+]0;autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2 $ logout[4P:x[K[Kas a02.s -o a02.o **[K[K&& ld a0 2.o readInt.s[Ko writeInt.o -o a02 && ./a09[K2
+Enter an integer: 9
+Enter an integer: 2
+Enter an integer: 5
+Enter an integer: 0
+Enter an integer: 1
+Your array before bubble sort: 9 2 5 0 1 
+Your array after bubble sort: 0 1 2 5 9 
+]0;autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2 $ as a02.s -o a02.o && ld a022.o readInt.o writeInt.o -o a02 && ./a02
+Enter an integer: 43 2
+Enter an integer: 725
+Enter an integer: 8
+Enter an integer: 4571
+Enter an integer: 324
+Your array before bubble sort: 42 725 8 4571 324 
+Your array after bubble sort: 8 42 324 725 4571 
+]0;autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2 $ as a02.s -o a02.o && ld a022.o readInt.o writeInt.o -o a02 && ./a02
+Enter an integer: 13
+Enter an integer: 8
+Enter an integer: 27
+Enter an integer: 12 3
+Enter an integer: 5
+Your array before bubble sort: 13 8 27 13 5 
+Your array after bubble sort: 5 8 13 13 27 
+]0;autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2autumn.lindberg@vmcslinuxprod01:~/CS201/assignment_2 $ exit
+exit
+
+Script done on 2026-10-24 09:24:58-07:00
