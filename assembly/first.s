@@ -9,13 +9,15 @@
 # %rsp	  %esp	  %sp	    %spl	Stack pointer 
 # %r8	    %r8d	  %r8w	  %r8b	5th argument 
 # %r9	    %r9d	  %r9w	  %r9b	6th argument 
-# %r10	  %r10d	  %r10w	  %r10b	free use / callee saved
-# %r11	  %r11d	  %r11w	  %r11b	
+# %r10	  %r10d	  %r10w	  %r10b CALLER SAVED (no need to save these in funcs)
+# %r11	  %r11d	  %r11w	  %r11b	CALLER SAVED 
+# %r12	  %r12d 	%r12w	  %r12b	free use / CALLEE SAVED
 # %r12	  %r12d 	%r12w	  %r12b		if a function uses these,
-# %r13	  %r13d  	%r13w	  %r13b		it must save their values to the stack
-# %r14	  %r14d	  %r14w	  %r14b		and return them to their original state
-# %r15	  %r15d	  %r15w	  %r15b		before returning (by convention)
-
+# %r13	  %r13d  	%r13w	  %r13b		if a function uses these,        stack
+# %r14	  %r14d	  %r14w	  %r14b		it must save their values to the  state
+# %r15	  %r15d	  %r15w	  %r15b		and return them to their original
+#                                 before returning (by convention)
+#
 # %rip                          pseudo-register (positional addresses)
 
 # store variables here
