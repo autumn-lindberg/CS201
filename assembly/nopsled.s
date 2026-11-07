@@ -1,5 +1,5 @@
 
-.section .rodata
+	.section .rodata
 sled_msg:
     .ascii "Entered NOP sled\n"
 sled_msg_len = . - sled_msg
@@ -37,3 +37,4 @@ nopsled:
 	syscall
 
 	ret 
+
